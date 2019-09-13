@@ -1,3 +1,5 @@
+
+
 (defvar bosss--block-beginning-mark  "==============")
 
 (defvar bosss--block-end-mark  "**************")
