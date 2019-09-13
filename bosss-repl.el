@@ -1,3 +1,5 @@
+
+;;;###autoload
 ;; (defvar bosss-repl-path "/usr/bin/bosss-console")
 (defvar bosss-repl-path "/usr/local/bin/sdb")
 
