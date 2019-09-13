@@ -39,7 +39,6 @@
   (bosss-repl-send-current-field)
   (bosss-next-field))
 
-
 ;; TODO define text object for a field
 
 (provide 'bosss)

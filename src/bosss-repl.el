@@ -109,17 +109,4 @@
 ;;     (while (search-forward bosss--block-beginning-mark nil t)
 ;;       (bosss-eval-and-next-field))))
 
-;; (defun bosss-repl-install-private ()
-;;   "installs the files needed to run the csharp repl with bosss loaded"
-;;   ;; TODO general file paths
-;;   (interactive)
-;;    (if (and (boundp 'bosss-path) bosss-path)
-;;        (progn
-;;          (copy-file "~/.emacs.d/dev/make-pkg.sh" bosss-path t)
-;;          (let ((default-directory bosss-path))
-;;            (async-shell-command
-;;             (concat bosss-path "/make-pkg.sh")))
-;;          (copy-file "~/.emacs.d/dev/init.cs" "~/.config/csharp/" t))
-;;      (error "Please specify the base path to your BoSSS installation")))
-
 (provide 'bosss-repl)
