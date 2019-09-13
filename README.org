@@ -2,3 +2,44 @@
 This package is intended to provide an alternative interface to [[https://github.com/FDYdarmstadt/BoSSS][BoSSS]].
 For an example configuration, please refer to my emacs config in my dotfiles-repository
 
+* Installation
+Since this package is probably only interesting for a limited group of people, 
+inclusion into ELPA or MELPA is currently not planned. If you would like me to 
+package it there, please let me know.
+
+For the time being, simply simply add the release page of this repository to the package archives, 
+i.e. something like
+
+#+BEGIN_SRC emacs-lisp
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+			 ("gnu"       . "http://elpa.gnu.org/packages/")
+			 ("melpa"     . "https://melpa.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("bosss" . "http://github.com/dakling/emacs-bosss/releases/archive/"))
+#+END_SRC
+
+* Configuration
+Example:
+
+#+BEGIN_SRC emacs-lisp
+;; bosss
+(use-package bosss
+  :ensure t
+  :init
+  (setq bosss-pad-path "/home/yourname/BoSSS/src/L4-application/BoSSSpad/bin/Debug/BoSSSpad.exe") ;; path to BoSSSpad.exe
+  (setq bosss-path-reference "/home/yourname/BoSSS-experimental/internal/src/private-kli/RANS_Solver/bin/Debug/RANS_Solver.exe") ;; optional: add a reference path to your project executable
+  (add-to-list 'auto-mode-alist '("\\.bws\\'" . bosss-mode)) ;; link bosss-mode to .bws file type
+  :config
+  (my-local-leader-def ;; define some keybindings
+    :keymaps 'bosss-mode-map
+    "j" '(bosss-next-field :which-key "next field")
+    "k" '(bosss-previous-field :which-key "previous field")
+    "ro" '(run-bosss-repl-other-window :which-key "start repl in other window")
+    "rn" '(bosss-bosss-repl-run-bosss-pad :which-key "run bossspad")
+    "ef" '(bosss-repl-send-current-field :which-key "send region to repl")
+    "ee" '(bosss-repl-send-region :which-key "send region to repl")
+    "eb" '(bosss-repl-send-buffer :which-key "send buffer to repl")
+    "en" '(bosss-eval-and-next-field :which-key "eval and next field")
+    "lp" '(bosss-repl-load-my-assembly :which-key "load my assembly")
+    "in" '(bosss-create-new-field :which-key "create new input field")))
+#+END_SRC
