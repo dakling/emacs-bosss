@@ -1,4 +1,4 @@
 * Description
-This package is intended to provide an alternative interface to [[w3m:https://github.com/FDYdarmstadt/BoSSS]] BoSSS. 
+This package is intended to provide an alternative interface to [[https:github.com/FDYdarmstadt/BoSSS][BoSSS]].
 For an example configuration, please refer to my emacs config in my dotfiles-repository
 
