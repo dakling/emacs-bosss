@@ -10,15 +10,13 @@
 
 ;; This file is not part of GNU Emacs.
 
-;; This file is free software...
-...
+;; This file is free software
 ;; along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code:
 
 ;;; repl stuff
 
-;;;###autoload
 ;; (defvar bosss-repl-path "/usr/bin/bosss-console")
 (defvar bosss-repl-path "/usr/local/bin/sdb")
 
@@ -71,6 +69,7 @@
   (setq comint-input-sender-no-newline nil)
   (setq comint-use-prompt-regexp t))
 
+;;;###autoload
 (define-derived-mode bosss-repl-mode comint-mode "bosss-repl"
   (setq comint-prompt-regexp bosss-repl-prompt-regexp)
   (setq comint-prompt-read-only t)
@@ -133,10 +132,7 @@
 
 ;; worksheet stuff
 
-(defvar bosss--block-beginning-mark  "==============")
-
-(defvar bosss--block-end-mark  "**************")
-
+;;;###autoload
 (define-derived-mode bosss-mode csharp-mode "bosss"
   ;; (setq bosss-highlights
   ;; 	'("==============" . font-lock-comment-face))
