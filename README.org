@@ -7,19 +7,10 @@ Since this package is probably only interesting for a limited group of people,
 inclusion into ELPA or MELPA is currently not planned. If you would like me to 
 package it there, please let me know.
 
-For the time being, simply simply add the release page of this repository to the package archives, 
-i.e. something like
-
-#+BEGIN_SRC emacs-lisp
-(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
-			 ("gnu"       . "http://elpa.gnu.org/packages/")
-			 ("melpa"     . "https://melpa.org/packages/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("bosss" . "http://github.com/dakling/emacs-bosss/releases/archive/"))
-#+END_SRC
+For the time being, simply clone this repository and add require the file bosss.el.
 
 * Configuration
-Example:
+Example (using use-package and general for key bindings):
 
 #+BEGIN_SRC emacs-lisp
 ;; bosss
