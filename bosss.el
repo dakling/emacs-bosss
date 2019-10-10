@@ -6,7 +6,7 @@
 ;; Created: 30 Aug 2019
 ;; Keywords: languages
 ;; Homepage: http://github.com/dakling/emacs-bosss
-;; Version: 0.1
+;; Version: 0.2
 
 ;; This file is not part of GNU Emacs.
 
@@ -148,11 +148,11 @@
   (interactive)
   (search-forward bosss--block-end-mark)
   (newline)
-  (insert bosss--block-beginning-mark)
+  (insert (concat "// " bosss--block-beginning-mark))
   (newline)
   (newline)
   (newline)
-  (insert bosss--block-end-mark)
+  (insert (concat "// " bosss--block-end-mark))
   (forward-line -2))
 
 (defun bosss-next-field ()
