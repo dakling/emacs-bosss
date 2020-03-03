@@ -36,7 +36,7 @@
   "load the personal project into the repl"
   (interactive)
   (when bosss-path-reference
-    (comint-send-string "*bosss*" (concat "LoadAssembly(\"" bosss-path-reference "\")\n"))))
+    (mapcar (lambda (reference) (comint-send-string "*bosss*" (concat "LoadAssembly(\"" reference "\")\n"))) bosss-path-reference)))
 
 (defun bosss-repl-start-bosss-pad ()
   "only makes sense if bossspad is wrapped inside a debugger"
