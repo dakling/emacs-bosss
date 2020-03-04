@@ -146,7 +146,7 @@
 
 (defun bosss-create-new-field ()
   (interactive)
-  (search-forward bosss--block-end-mark)
+  (search-forward bosss--block-end-mark nil t)
   (newline)
   (insert (concat "// " bosss--block-beginning-mark))
   (newline)
@@ -169,6 +169,20 @@
   (interactive)
   (bosss-repl-send-current-field)
   (bosss-next-field))
+
+;;ugly but working
+(defun bosss-comment-all-separators ()
+  "Comment out all separators"
+  (interactive)
+   (replace-regexp "^===" "// ===" nil (point-min) (point-max))
+   (replace-regexp "^\\*\\*\\*" "// \*\*\*" nil (point-min) (point-max)))
+
+;;ugly but working
+(defun bosss-uncomment-all-separators ()
+  "Uncomment all separators"
+  (interactive)
+   (replace-regexp "^// ===" "===" nil (point-min) (point-max))
+   (replace-regexp "^// \\*\\*\\*" "\*\*\*" nil (point-min) (point-max)))
 
 ;; TODO define text object for a field
 
