@@ -157,13 +157,15 @@
 
 (defun bosss-next-field ()
   (interactive)
-  (search-forward bosss--block-beginning-mark)
-  (forward-line 1))
+  (if (search-forward bosss--block-beginning-mark nil t)
+      (forward-line 1)
+    (message "Already on last field")))
 
 (defun bosss-previous-field ()
   (interactive)
-  (search-backward bosss--block-beginning-mark nil nil 2)
-  (forward-line 1))
+  (if (search-backward bosss--block-beginning-mark nil t 2)
+      (forward-line 1)
+    (message "Already on first field")))
 
 (defun bosss-eval-and-next-field ()
   (interactive)
