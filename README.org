@@ -9,7 +9,7 @@ package it there, please let me know.
 
 For the time being, simply clone this repository and ~require~ the file ~bosss.el~ (see also the example configs).
 
-Next, adapt the file ~bosss-console~ and put it somewhere in your ~$PATH~.
+Next, adapt the file ~bosss-console~ and put it somewhere in your ~$PATH~. Please note that depending on how you set your environment variables, emacs may not pick them up and thus have a different value for ~$PATH~ and ~exec-path~. You can double-check by typing ~M-x getenv~ and then searching for ~PATH~. Similarly, make sure that ~$BOSSS_INSTALL~ is correctly recognized by emacs. For more information see the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Environment.html][emacs manual]].
 
 * Configuration
 In this section, we provide some example configs that should give you an idea of what is possible. They should of course be adapted to your preferences and may not fully work if copied blindly.
@@ -100,3 +100,10 @@ In this section, we provide some example configs that should give you an idea of
    :n "lp" #'bosss-repl-load-my-assembly
    :n "in" #'bosss-create-new-field))
 #+END_SRC
+
+
+* Example Session
+- Open a worksheet file with a ~.bws~-ending
+- If the file is empty, insert a new input field using ~bosss-create-new-field~. This will insert lines consisting of many ~=~- and ~*~-symbols. These lines separate different input and output fields which you may know from the graphical BoSSSpad. Note that the graphical BoSSSpad requires these separators to be uncommented, whereas for ~emacs-bosss~, it is fine (and more convenient - it allows us to use default C# syntax highlighting etc.) to comment them. The commands ~bosss-comment-all-separators~ and ~bosss-uncomment-all-separators~ are available for conveniently going back and forth.
+- Run ~run-bosss-repl-other-window~ to open a bosss console window in a vertical split
+- You can directly type commands into this new window. However, it is generally more convenient to edit the ~.bws~-file and send the commands to the console window using e.g. ~bosss-repl-send-current-field~.
