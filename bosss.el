@@ -18,9 +18,12 @@
 ;;; repl stuff
 
 ;; (defvar bosss-repl-path "/usr/bin/bosss-console")
-(defvar bosss-repl-path "/usr/local/bin/sdb")
+(defvar bosss-repl-path "bosss-console")
+;; (defvar bosss-repl-path "/usr/local/bin/sdb")
+;; (defvar bosss-repl-path "/usr/bin/mono")
 
 (defvar bosss-repl-arguments nil)
+;; (defvar bosss-repl-arguments (list bosss-pad-path))
 
 (defvar bosss-repl-mode-map (make-sparse-keymap))
 
@@ -41,12 +44,13 @@
 (defun bosss-repl-start-bosss-pad ()
   "only makes sense if bossspad is wrapped inside a debugger"
   (interactive)
-  (comint-send-string
-   "*bosss*"
-   "args --simpleconsole \n")
-  (comint-send-string
-   "*bosss*"
-   (concat "run " bosss-pad-path "\n")))
+  ;; (comint-send-string
+  ;;  "*bosss*"
+  ;;  "args --simpleconsole \n")
+  ;; (comint-send-string
+  ;;  "*bosss*"
+  ;;  (concat "run " bosss-pad-path "\n"))
+  )
 
 (defun run-bosss-repl ()
   "start the repl in a new or existing buffer"
