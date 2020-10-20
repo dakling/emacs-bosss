@@ -19,7 +19,7 @@ In this section, we provide some example configs that should give you an idea of
 #+BEGIN_SRC emacs-lisp
 ;; bosss
 (add-to-load-path "~/WHEREEVER/YOU/CLONED/THIS")
-(require bosss)
+(require 'bosss)
 (setq bosss-pad-path "/home/YOURNAME/BoSSS/src/L4-application/BoSSSpad/bin/Debug/BoSSSpad.exe") ;; path to BoSSSpad.exe
 ;; Setting this variable allows you to run bosss-repl-load-my-assembly, which makes your experimental BoSSS libraries available
 (setq bosss-path-reference (mapcar (lambda (proj) (concat "/home/YOURNAME/BoSSS-experimental/internal/src/private-kli/" proj));; optional: add a reference path to your project executable
