@@ -105,14 +105,18 @@
                         ""
                          input-string)))
 
-(defun bosss-repl-send-region (beg end)
+(defun bosss-repl-send-string (string-to-send)
   "send the active region to comint"
-  (interactive "r")
   (comint-send-string "*bosss*"
                       (concat
                        (bosss--format-input
-                        (buffer-substring beg end))
+                        string-to-send)
                        "\n")))
+
+(defun bosss-repl-send-region (beg end)
+  "send the active region to comint"
+  (interactive "r")
+  (bosss-repl-send-string (buffer-substring beg end)))
 
 (defun bosss-repl-send-current-field ()
   "send the current field to comint"
@@ -124,6 +128,11 @@
      (search-forward bosss--block-end-mark)
      (move-end-of-line 0)
      (bosss-repl-send-region beg (point)))))
+
+(defun bosss-repl-quit ()
+  "send the current field to comint"
+  (interactive)
+  (bosss-repl-send-string "quit"))
 
 ;; not working; we need to check if each command has finished!
 ;; (defun bosss-repl-send-buffer ()
