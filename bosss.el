@@ -57,15 +57,13 @@
   (interactive)
   (let* ((bosss-program bosss-repl-path)
 	 (buffer (comint-check-proc "bosss")))
-    (pop-to-buffer-same-window
-     (if (or buffer (not (derived-mode-p 'bosss-mode))
-	     (comint-check-proc (current-buffer)))
-	 (get-buffer-create (or buffer "*bosss*"))
-       (current-buffer)))
+    (display-buffer
+     (get-buffer-create (or buffer "*bosss*")))
     (unless buffer
       (apply 'make-comint-in-buffer "bosss" buffer
        bosss-program bosss-repl-arguments)
-      (bosss-repl-mode)))
+      (with-current-buffer (or buffer "*bosss*")
+        (bosss-repl-mode))))
   (bosss-repl-start-bosss-pad))
 
 (defun bosss--repl-initialize ()
@@ -198,6 +196,23 @@
   (interactive)
    (replace-regexp "^// ===" "===" nil (point-min) (point-max))
    (replace-regexp "^// \\*\\*\\*" "\*\*\*" nil (point-min) (point-max)))
+
+(defun bosss-get-most-recent-deploy-directory ()
+  (with-current-buffer "*bosss*"
+    (progn
+     (goto-char (point-max))
+     (search-backward "Deployment directory:" nil t)
+     (end-of-line)
+     (thing-at-point 'filename t))))
+
+;; a bit of a HACK
+(defun bosss-get-most-recent-pid ()
+  (with-current-buffer "*bosss*"
+    (progn
+     (goto-char (point-max))
+     (search-backward-regexp "^[0-9]" nil t)
+     (end-of-line)
+     (thing-at-point 'word t))))
 
 ;; TODO define text object for a field
 
